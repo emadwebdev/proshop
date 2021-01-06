@@ -27,11 +27,11 @@ const CartScreen = ({match, location, history}) => {
     }
 
     return (
-        <Row className="flex-row-reverse text-right">
+        <Row>
             <Col md={8}>
-              <h1>العربة</h1>
+              <h1>Cart</h1>
               {cartItems.length === 0 ? (
-                  <Message><p dir='rtl' lang='ar'>العربة فارغة <Link className="btn btn-dark" to="/">عودة</Link></p></Message>
+                  <Message><p dir='rtl' lang='ar'> Your Cart is empty <Link className="btn btn-dark" to="/">Back</Link></p></Message>
               ):(
                 <ListGroup variant="flush">
                   {cartItems.map(item =>(
@@ -70,14 +70,14 @@ const CartScreen = ({match, location, history}) => {
                 <Card>
                     <ListGroup variant="flush">
                         <ListGroup.Item>
-                                <h3> إجمالي المشتريات : {cartItems.reduce((acc, item) => acc + item.qty, 0)}</h3>
+                                <h3>  Items : {cartItems.reduce((acc, item) => acc + item.qty, 0)}</h3>
                         </ListGroup.Item>
                     </ListGroup>
                     <ListGroup.Item>
-                                <h3>إجمالي السعر : {cartItems.reduce((acc, item) => acc + item.qty * item.price, 0).toFixed(2)} جنيها</h3>
+                                <h3> Total Price : {cartItems.reduce((acc, item) => acc + item.qty * item.price, 0).toFixed(2)}</h3>
                     </ListGroup.Item>
                     <ListGroup.Item>
-                        <Button type="button" className="btn-block" disabled={cartItems.length === 0} onClick={checkOutHandler}>شراء</Button>
+                        <Button type="button" className="btn-block" disabled={cartItems.length === 0} onClick={checkOutHandler}>Purchase</Button>
                     </ListGroup.Item>
                 </Card>
             </Col>
